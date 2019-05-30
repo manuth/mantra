@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "rootDir": "src",
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "target": "es5"
+    }
+}

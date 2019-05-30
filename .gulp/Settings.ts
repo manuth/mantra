@@ -16,6 +16,21 @@ export class Settings
     private readonly destinationPath: string = "lib";
 
     /**
+     * Gets the path to the assets-directory.
+     */
+    private readonly assetsPath: string = "assets";
+
+    /**
+     * Gets the path to the JavaScript-directory.
+     */
+    private readonly javaScriptPath: string = "js";
+
+    /**
+     * Gets or sets the name of the TypeScript project-root.
+     */
+    private readonly typeScriptProjectRoot: string = "App";
+
+    /**
      * Gets the path to a temporary directory.
      */
     private readonly tempPath: string = "obj";
@@ -46,6 +61,53 @@ export class Settings
     public DestinationPath(...path: string[])
     {
         return Path.posix.join(this.destinationPath, ...path);
+    }
+
+    /**
+     * Creates a path relative to the assets-directory.
+     *
+     * @param path
+     * The path to join.
+     *
+     * @return
+     * The joined path.
+     */
+    public AssetsPath(...path: string[])
+    {
+        return this.DestinationPath(this.assetsPath, ...path);
+    }
+
+    /**
+     * Creates a path relative to the JavaScript-directory.
+     *
+     * @param path
+     * The path to join.
+     */
+    public JavaScriptPath(...path: string[])
+    {
+        return this.AssetsPath(this.javaScriptPath, ...path);
+    }
+
+    /**
+     * Creates a path relative to the TypeScript project-root.
+     *
+     * @param path
+     * The path to join.
+     */
+    public TypeScriptProjectRoot(...path: string[])
+    {
+        return this.SourcePath(this.typeScriptProjectRoot, ...path);
+    }
+
+    /**
+     * Creates a path relative to the TypeScript project-root.
+     *
+     * @param path
+     * The path to join.
+     */
+    public TypeScriptPath(...path: string[])
+    {
+        return this.TypeScriptProjectRoot(this.SourcePath(...path));
     }
 
     /**
