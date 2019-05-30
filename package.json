@@ -22,7 +22,21 @@
     "url": "https://git.nuth.ch/manuth/mantra/issues"
   },
   "homepage": "https://git.nuth.ch/manuth/mantra#readme",
-  "scripts": {},
+  "scripts": {
+    "build": "gulp Build"
+  },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/register": "^7.4.4",
+    "@babel/runtime": "^7.4.5",
+    "@types/gulp": "^4.0.6",
+    "@types/node": "^12.0.3",
+    "gulp": "^4.0.2"
+  }
 }

@@ -16,6 +16,14 @@
         "mantra"
     ],
     "license": "MIT",
+    "scripts-descriptions": {
+        "build": "Builds the project"
+    },
+    "scripts": {
+        "build": [
+            "npm run build"
+        ]
+    },
     "require": {},
     "require-dev": {}
 }
