@@ -3,6 +3,7 @@ import gulp from "gulp";
 import tsify from "tsify";
 import source from "vinyl-source-stream";
 import { SettingsStore } from "./.gulp/SettingsStore";
+import "./.gulp/TaskFunction";
 
 let settings = SettingsStore.Load();
 
@@ -19,15 +20,15 @@ function CreateTarget(target: string)
         Build
     );
 
-    task["displayName"] = target;
-    task["description"] = "Builds the project for the `" + target + "`-target";
+    task.displayName = target;
+    task.description = "Builds the project for the `" + target + "`-target";
     return task;
 }
 
 export let Build = gulp.parallel(
     Library,
     Templates);
-Build["description"] = "Builds the project";
+Build.description = "Builds the project";
 
 export let Debug = CreateTarget("Debug");
 export let Release = CreateTarget("Release");
@@ -53,7 +54,7 @@ export function Library()
             gulp.dest(settings.JavaScriptPath())
         );
 }
-Library["description"] = "Builds the TypeScript-library"
+Library.description = "Builds the TypeScript-library"
 
 export function Templates()
 {
@@ -61,7 +62,7 @@ export function Templates()
         settings.SourcePath("Templates", "**")).pipe(
             gulp.dest("templates"));
 }
-Templates["description"] = "Build the templates";
+Templates.description = "Build the templates";
 
 
 export function Watch()
@@ -69,6 +70,6 @@ export function Watch()
     gulp.watch(settings.SourcePath("Templates", "**"), Templates);
     gulp.watch(settings.TypeScriptProjectRoot("**"), Library);
 }
-Watch["description"] = "Builds the project in watch-mode";
+Watch.description = "Builds the project in watch-mode";
 
 export default Build;
