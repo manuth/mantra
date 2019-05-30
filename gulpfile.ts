@@ -1,5 +1,7 @@
 import browserify from "browserify";
+import FileSystem from "fs-extra";
 import gulp from "gulp";
+import Path from "path";
 import tsify from "tsify";
 import source from "vinyl-source-stream";
 import { SettingsStore } from "./.gulp/SettingsStore";
@@ -32,6 +34,14 @@ Build.description = "Builds the project";
 
 export let Debug = CreateTarget("Debug");
 export let Release = CreateTarget("Release");
+
+export async function Clean()
+{
+    await FileSystem.remove(Path.join("test", "website", "themes", "mantra"));
+    await FileSystem.remove(settings.JavaScriptPath());
+    await FileSystem.remove("templates");
+}
+Clean.description = "Cleans the build-files"
 
 export function Library()
 {
@@ -68,9 +78,9 @@ Templates.description = "Build the templates";
 export let Watch = gulp.series(
     Build,
     function Watching()
-{
-    gulp.watch(settings.SourcePath("Templates", "**"), Templates);
-    gulp.watch(settings.TypeScriptProjectRoot("**"), Library);
+    {
+        gulp.watch(settings.SourcePath("Templates", "**"), Templates);
+        gulp.watch(settings.TypeScriptProjectRoot("**"), Library);
     });
 Watch.description = "Builds the project in watch-mode";
 

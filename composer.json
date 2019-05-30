@@ -17,11 +17,15 @@
     ],
     "license": "MIT",
     "scripts-descriptions": {
+        "clean": "Cleans the developement-environment",
         "build": "Builds the project",
         "initialize": "Initializes the developement-environment",
         "symlinks": "Creates all symbolic links required for testing the theme"
     },
     "scripts": {
+        "clean": [
+            "npm run clean"
+        ],
         "build": [
             "npm run build"
         ],
@@ -40,6 +44,7 @@
         "scripts-dev": {
             "post-install-cmd": [
                 "npm install",
+                "@clean",
                 "@initialize",
                 "composer --working-dir=./test/website install"
             ]

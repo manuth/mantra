@@ -24,6 +24,7 @@
   "homepage": "https://git.nuth.ch/manuth/mantra#readme",
   "scripts": {
     "build": "gulp Build",
+    "clean": "gulp Clean",
     "initialize": "mkdirp javascript && mkdirp templates && npm run symlinks",
     "symlinks": "globstar --node -- lnk \"!(test)\" ./test/website/themes/mantra/"
   },
@@ -38,10 +39,12 @@
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.4.5",
     "@types/browserify": "^12.0.36",
+    "@types/fs-extra": "^7.0.0",
     "@types/gulp": "^4.0.6",
     "@types/node": "^12.0.3",
     "@types/vinyl-source-stream": "0.0.30",
     "browserify": "^16.2.3",
+    "fs-extra": "^8.0.1",
     "globstar": "^1.0.0",
     "gulp": "^4.0.2",
     "lnk-cli": "^1.0.1",
