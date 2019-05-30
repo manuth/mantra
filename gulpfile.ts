@@ -65,11 +65,13 @@ export function Templates()
 Templates.description = "Build the templates";
 
 
-export function Watch()
+export let Watch = gulp.series(
+    Build,
+    function Watching()
 {
     gulp.watch(settings.SourcePath("Templates", "**"), Templates);
     gulp.watch(settings.TypeScriptProjectRoot("**"), Library);
-}
+    });
 Watch.description = "Builds the project in watch-mode";
 
 export default Build;
