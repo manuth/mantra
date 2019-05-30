@@ -54,6 +54,7 @@ export function Library()
             gulp.dest(settings.JavaScriptPath())
         );
 }
+Library["description"] = "Builds the TypeScript-library"
 
 export function Templates()
 {
@@ -67,6 +68,8 @@ Templates["description"] = "Build the templates";
 export function Watch()
 {
     gulp.watch(settings.SourcePath("Templates", "**"), Templates);
+    gulp.watch(settings.TypeScriptProjectRoot("**"), Library);
 }
+Watch["description"] = "Builds the project in watch-mode";
 
 export default Build;
