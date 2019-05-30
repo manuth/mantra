@@ -46,6 +46,9 @@ export class Settings
      *
      * @param path
      * The path to join.
+     *
+     * @return
+     * The joined path.
      */
     public SourcePath(...path: string[])
     {
@@ -57,6 +60,9 @@ export class Settings
      *
      * @param path
      * The path to join.
+     *
+     * @return
+     * The joined path.
      */
     public DestinationPath(...path: string[])
     {
@@ -82,6 +88,9 @@ export class Settings
      *
      * @param path
      * The path to join.
+     *
+     * @return
+     * The joined path.
      */
     public JavaScriptPath(...path: string[])
     {
@@ -93,6 +102,9 @@ export class Settings
      *
      * @param path
      * The path to join.
+     *
+     * @return
+     * The joined path.
      */
     public TypeScriptProjectRoot(...path: string[])
     {
@@ -104,6 +116,9 @@ export class Settings
      *
      * @param path
      * The path to join.
+     *
+     * @return
+     * The joined path.
      */
     public TypeScriptPath(...path: string[])
     {
@@ -115,6 +130,9 @@ export class Settings
      *
      * @param path
      * The path to join.
+     *
+     * @return
+     * The joined path.
      */
     public TempPath(...path: string[])
     {
