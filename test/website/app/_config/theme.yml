@@ -4,3 +4,4 @@ Name: mytheme
 SilverStripe\View\SSViewer:
   themes:
     - 'mantra'
+    - '$default'
