@@ -1,0 +1,21 @@
+{
+    "name": "manuth/mantra",
+    "version": "0.0.0",
+    "type": "silverstripe-theme",
+    "description": "The theme of the nuth.ch-website",
+    "authors": [
+        {
+            "name": "Manuel Thalmann",
+            "email": "m@nuth.ch"
+        }
+    ],
+    "keywords": [
+        "SilverStripe",
+        "Theme",
+        "m@nuth",
+        "mantra"
+    ],
+    "license": "MIT",
+    "require": {},
+    "require-dev": {}
+}
