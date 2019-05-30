@@ -23,7 +23,7 @@ export class Settings
     /**
      * Gets the path to the JavaScript-directory.
      */
-    private readonly javaScriptPath: string = "js";
+    private readonly javaScriptPath: string = "javascript";
 
     /**
      * Gets or sets the name of the TypeScript project-root.
@@ -47,9 +47,14 @@ export class Settings
 
     /**
      * Initializes a new instance of the `Settings` class.
+     *
+     * @param target
+     * The target of the settings.
      */
-    public constructor()
-    { }
+    public constructor(target: string)
+    {
+        this.Target = target;
+    }
 
     /**
      * Creates a path relative to the source-directory.
@@ -104,7 +109,7 @@ export class Settings
      */
     public JavaScriptPath(...path: string[])
     {
-        return this.AssetsPath(this.javaScriptPath, ...path);
+        return Path.posix.join(this.javaScriptPath, ...path);
     }
 
     /**

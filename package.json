@@ -24,7 +24,7 @@
   "homepage": "https://git.nuth.ch/manuth/mantra#readme",
   "scripts": {
     "build": "gulp Build",
-    "initialize": "mkdirp lib && mkdirp templates && npm run symlinks",
+    "initialize": "mkdirp javascript && mkdirp templates && npm run symlinks",
     "symlinks": "globstar --node -- lnk \"!(test)\" ./test/website/themes/mantra/"
   },
   "dependencies": {},
@@ -46,6 +46,7 @@
     "gulp": "^4.0.2",
     "lnk-cli": "^1.0.1",
     "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.3",
     "tsify": "^4.0.1",
     "typescript": "^3.5.1",
     "vinyl-source-stream": "^2.0.0"

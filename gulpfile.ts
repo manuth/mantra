@@ -1,6 +1,5 @@
 import browserify from "browserify";
 import gulp from "gulp";
-import Path from "path";
 import tsify from "tsify";
 import source from "vinyl-source-stream";
 import { SettingsStore } from "./.gulp/SettingsStore";

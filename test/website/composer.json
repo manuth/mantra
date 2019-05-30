@@ -16,6 +16,9 @@
         "silverstripe/recipe-cms": "4.3.3@stable"
     },
     "extra": {
+        "expose": [
+            "themes/mantra/javascript"
+        ],
         "project-files-installed": [
             "app/.htaccess",
             "app/_config.php",
