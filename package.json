@@ -1,0 +1,28 @@
+{
+  "name": "mantra",
+  "version": "0.0.0",
+  "description": "The theme of the nuth.ch-website",
+  "author": "Manuel Thalmann <m@nuth.ch>",
+  "license": "MIT",
+  "keywords": [
+    "SilverStripe",
+    "Theme",
+    "m@nuth",
+    "mantra"
+  ],
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.nuth.ch/manuth/mantra.git"
+  },
+  "bugs": {
+    "url": "https://git.nuth.ch/manuth/mantra/issues"
+  },
+  "homepage": "https://git.nuth.ch/manuth/mantra#readme",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
