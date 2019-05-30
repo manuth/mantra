@@ -3,14 +3,35 @@ import gulp from "gulp";
 import Path from "path";
 import tsify from "tsify";
 import source from "vinyl-source-stream";
-import { Settings } from "./.gulp/Settings";
+import { SettingsStore } from "./.gulp/SettingsStore";
 
-let settings = new Settings();
+let settings = SettingsStore.Load();
+
+function CreateTarget(target: string)
+{
+    let LoadTarget = (done: () => void) =>
+    {
+        settings = SettingsStore.Load(target);
+        done();
+    }
+
+    let task = gulp.series(
+        LoadTarget,
+        Build
+    );
+
+    task["displayName"] = target;
+    task["description"] = "Builds the project for the `" + target + "`-target";
+    return task;
+}
 
 export let Build = gulp.parallel(
     Library,
     Templates);
 Build["description"] = "Builds the project";
+
+export let Debug = CreateTarget("Debug");
+export let Release = CreateTarget("Release");
 
 export function Library()
 {

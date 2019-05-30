@@ -36,6 +36,16 @@ export class Settings
     private readonly tempPath: string = "obj";
 
     /**
+     * Gets or sets the target of the settings.
+     */
+    public Target: string;
+
+    /**
+     * Gets or sets a value indicating whether the project should be built in debug-mode.
+     */
+    public Debug: boolean = false;
+
+    /**
      * Initializes a new instance of the `Settings` class.
      */
     public constructor()
