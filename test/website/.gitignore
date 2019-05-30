@@ -1,0 +1,6 @@
+/silverstripe-cache/
+/.env
+/vendor/
+/themes/mantra/
+/resources/
+/public/resources/

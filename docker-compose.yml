@@ -1,0 +1,26 @@
+version: "3"
+networks:
+  test:
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: .docker/web.Dockerfile
+    volumes:
+      - ./test/website:/var/www/html
+    networks:
+      - test
+    ports:
+      - 80:80
+  db:
+    build:
+      context: .
+      dockerfile: .docker/db.Dockerfile
+    volumes:
+      - ./obj/mysql:/var/lib/mysql
+    networks:
+      - test
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: SilverStripe

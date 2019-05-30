@@ -17,13 +17,32 @@
     ],
     "license": "MIT",
     "scripts-descriptions": {
-        "build": "Builds the project"
+        "build": "Builds the project",
+        "initialize": "Initializes the developement-environment",
+        "symlinks": "Creates all symbolic links required for testing the theme"
     },
     "scripts": {
         "build": [
             "npm run build"
+        ],
+        "initialize": [
+            "npm run initialize"
+        ],
+        "symlinks": [
+            "npm run symlinks"
         ]
     },
     "require": {},
-    "require-dev": {}
+    "require-dev": {
+        "neronmoon/scriptsdev": "^0.1.6"
+    },
+    "extra": {
+        "scripts-dev": {
+            "post-install-cmd": [
+                "npm install",
+                "@initialize",
+                "composer --working-dir=./test/website install"
+            ]
+        }
+    }
 }

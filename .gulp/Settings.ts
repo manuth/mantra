@@ -34,7 +34,7 @@ export class Settings
      */
     public SourcePath(...path: string[])
     {
-        return Path.join(this.sourcePath, ...path);
+        return Path.posix.join(this.sourcePath, ...path);
     }
 
     /**
@@ -45,7 +45,7 @@ export class Settings
      */
     public DestinationPath(...path: string[])
     {
-        return Path.join(this.destinationPath, ...path);
+        return Path.posix.join(this.destinationPath, ...path);
     }
 
     /**
@@ -56,6 +56,6 @@ export class Settings
      */
     public TempPath(...path: string[])
     {
-        return Path.join(this.tempPath, ...path);
+        return Path.posix.join(this.tempPath, ...path);
     }
 }
