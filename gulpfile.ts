@@ -50,13 +50,12 @@ Clean.description = "Cleans the build-files"
 
 export function Library()
 {
-    let tsConfigFile = settings.TypeScriptProjectRoot("tsconfig.json");
+    let tsConfigFile = Path.resolve(settings.TypeScriptProjectRoot("tsconfig.json"));
 
     return browserify(
         {
-            entries: [
-                settings.TypeScriptPath("main.ts")
-            ]
+            entries: (require(tsConfigFile).files as string[]).map(
+                (file: string) => settings.TypeScriptProjectRoot(file))
         }
     ).plugin(
         tsify,

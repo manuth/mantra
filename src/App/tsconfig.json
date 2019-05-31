@@ -1,4 +1,7 @@
 {
+    "files": [
+        "src/main.ts"
+    ],
     "compilerOptions": {
         "rootDir": "src",
         "lib": [
