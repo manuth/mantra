@@ -104,7 +104,7 @@ export let Watch = gulp.series(
     {
         gulp.watch(settings.SourcePath("Templates", "**"), Templates);
         gulp.watch(settings.TypeScriptProjectRoot("**"), Library);
-        gulp.watch(settings.StylePath("**"), Theme);
+        gulp.watch(settings.SourcePath("Theme", "**"), Theme);
     });
 Watch.description = "Builds the project in watch-mode";
 
