@@ -17,7 +17,8 @@
     },
     "extra": {
         "expose": [
-            "themes/mantra/javascript"
+            "themes/mantra/javascript",
+            "themes/mantra/css"
         ],
         "project-files-installed": [
             "app/.htaccess",
