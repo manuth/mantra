@@ -81,8 +81,8 @@ composer.phar
 # composer.lock
 
 #  Build files
-[Ll]ib/
 [Oo]bj/
 /javascript/
 /css/
 /templates/
+/assets/

@@ -11,11 +11,6 @@ export class Settings
     private readonly sourcePath: string = "src";
 
     /**
-     * Gets the path to the destination-directory.
-     */
-    private readonly destinationPath: string = "lib";
-
-    /**
      * Gets the path to the assets-directory.
      */
     private readonly assetsPath: string = "assets";
@@ -81,20 +76,6 @@ export class Settings
     }
 
     /**
-     * Creates a path relative to the destination-directory.
-     *
-     * @param path
-     * The path to join.
-     *
-     * @return
-     * The joined path.
-     */
-    public DestinationPath(...path: string[])
-    {
-        return Path.posix.join(this.destinationPath, ...path);
-    }
-
-    /**
      * Creates a path relative to the assets-directory.
      *
      * @param path
@@ -105,7 +86,7 @@ export class Settings
      */
     public AssetsPath(...path: string[])
     {
-        return this.DestinationPath(this.assetsPath, ...path);
+        return Path.posix.join(this.assetsPath, ...path);
     }
 
     /**
