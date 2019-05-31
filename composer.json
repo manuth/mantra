@@ -19,6 +19,7 @@
     "scripts-descriptions": {
         "clean": "Cleans the developement-environment",
         "build": "Builds the project",
+        "watch": "Builds the project in watch-mode",
         "initialize": "Initializes the developement-environment",
         "symlinks": "Creates all symbolic links required for testing the theme"
     },
@@ -28,6 +29,9 @@
         ],
         "build": [
             "npm run build"
+        ],
+        "watch": [
+            "npm run watch"
         ],
         "initialize": [
             "npm run initialize"

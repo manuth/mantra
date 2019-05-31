@@ -24,6 +24,7 @@
   "homepage": "https://git.nuth.ch/manuth/mantra#readme",
   "scripts": {
     "build": "gulp Build",
+    "watch": "gulp Watch",
     "clean": "gulp Clean",
     "initialize": "mkdirp javascript && mkdirp css && mkdirp templates && mkdirp assets && npm run symlinks",
     "symlinks": "globstar --node -- lnk \"!(test)\" ./test/website/themes/mantra/"
