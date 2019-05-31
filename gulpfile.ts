@@ -51,8 +51,7 @@ export function Library()
         {
             entries: [
                 settings.TypeScriptPath("main.ts")
-            ],
-            debug: true
+            ]
         }
     ).plugin(
         tsify,
