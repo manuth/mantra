@@ -1,8 +1,13 @@
 import browserify from "browserify";
-import FileSystem from "fs-extra";
+import FileSystem, { pathExists } from "fs-extra";
 import gulp from "gulp";
+import buffer from "gulp-buffer";
+import gulpif from "gulp-if";
 import rename from "gulp-rename";
 import sass from "gulp-sass";
+import sourcemaps from "gulp-sourcemaps";
+import minify from "gulp-uglify";
+import lazyPipe from "lazypipe";
 import sassImporter from "node-sass-package-importer";
 import Path from "path";
 import tsify from "tsify";
@@ -51,11 +56,28 @@ Clean.description = "Cleans the build-files"
 export function Library()
 {
     let tsConfigFile = Path.resolve(settings.TypeScriptProjectRoot("tsconfig.json"));
+    let libraryBuilder = lazyPipe().pipe(
+        minify
+    );
+
+    let debugBuilder = lazyPipe().pipe(
+        sourcemaps.init,
+        {
+            loadMaps: true
+        }
+    ).pipe(
+        sourcemaps.write,
+        ".",
+        {
+            sourceRoot: Path.relative(settings.JavaScriptPath(), ".")
+        }
+    );
 
     return browserify(
         {
             entries: (require(tsConfigFile).files as string[]).map(
-                (file: string) => settings.TypeScriptProjectRoot(file))
+                (file: string) => settings.TypeScriptProjectRoot(file)),
+            debug: settings.Debug
         }
     ).plugin(
         tsify,
@@ -64,6 +86,14 @@ export function Library()
         }).bundle().pipe(
             source("mantra.js")
         ).pipe(
+            buffer()
+        ).pipe(
+            gulpif(
+                settings.Debug,
+                debugBuilder(),
+                libraryBuilder()
+            )
+        ).pipe(
             gulp.dest(settings.JavaScriptPath())
         );
 }
@@ -71,17 +101,37 @@ Library.description = "Builds the TypeScript-library";
 
 export function Theme()
 {
+    let themeBuilder = lazyPipe().pipe(
+        sass,
+        {
+            importer: sassImporter()
+        }
+    ).pipe(
+        rename,
+        (parsedPath) =>
+        {
+            parsedPath.basename = "mantra";
+        }
+    );
+
+    let debugBuilder = lazyPipe().pipe(
+        sourcemaps.init
+    ).pipe(
+        themeBuilder
+    ).pipe(
+        sourcemaps.write,
+        ".",
+        {
+            sourceRoot: Path.relative(settings.StylePath(), settings.SourcePath("Theme"))
+        }
+    );
+
     return gulp.src(
         settings.SourcePath("Theme", "main.scss")).pipe(
-            sass({
-                importer: sassImporter()
-            })
-        ).pipe(
-            rename(
-                (parsedPath) =>
-                {
-                    parsedPath.basename = "mantra"
-                })
+            gulpif(
+                settings.Debug,
+                debugBuilder(),
+                themeBuilder())
         ).pipe(
             gulp.dest(settings.StylePath())
         )
