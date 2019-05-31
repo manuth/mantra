@@ -31,6 +31,11 @@ export class Settings
     private readonly typeScriptProjectRoot: string = "App";
 
     /**
+     * Gets the path to the image-directory.
+     */
+    private readonly imagePath: string = "images";
+
+    /**
      * Gets the path to the style-directory.
      */
     private readonly stylePath: string = "css";
@@ -143,6 +148,20 @@ export class Settings
     public TypeScriptPath(...path: string[])
     {
         return this.TypeScriptProjectRoot(this.SourcePath(...path));
+    }
+
+    /**
+     * Creates a path relative to the image-directory.
+     *
+     * @param path
+     * The path to join.
+     *
+     * @return
+     * The joined path.
+     */
+    public ImagePath(...path: string[])
+    {
+        return this.AssetsPath(this.imagePath, ...path);
     }
 
     /**
