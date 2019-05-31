@@ -25,7 +25,7 @@
   "scripts": {
     "build": "gulp Build",
     "clean": "gulp Clean",
-    "initialize": "mkdirp javascript && mkdirp css && mkdirp templates && npm run symlinks",
+    "initialize": "mkdirp javascript && mkdirp css && mkdirp templates && mkdirp assets && npm run symlinks",
     "symlinks": "globstar --node -- lnk \"!(test)\" ./test/website/themes/mantra/"
   },
   "dependencies": {},
