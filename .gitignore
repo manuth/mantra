@@ -83,5 +83,6 @@ composer.phar
 #  Build files
 [Ll]ib/
 [Oo]bj/
-/templates/
 /javascript/
+/css/
+/templates/

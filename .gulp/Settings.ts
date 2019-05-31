@@ -31,6 +31,11 @@ export class Settings
     private readonly typeScriptProjectRoot: string = "App";
 
     /**
+     * Gets the path to the style-directory.
+     */
+    private readonly stylePath: string = "css";
+
+    /**
      * Gets the path to a temporary directory.
      */
     private readonly tempPath: string = "obj";
@@ -138,6 +143,20 @@ export class Settings
     public TypeScriptPath(...path: string[])
     {
         return this.TypeScriptProjectRoot(this.SourcePath(...path));
+    }
+
+    /**
+     * Creates a path relative to the style-directory.
+     *
+     * @param path
+     * The path to join.
+     *
+     * @return
+     * The joined path.
+     */
+    public StylePath(...path: string[])
+    {
+        return Path.posix.join(this.stylePath, ...path);
     }
 
     /**
