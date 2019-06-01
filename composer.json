@@ -17,10 +17,10 @@
     ],
     "license": "MIT",
     "scripts-descriptions": {
-        "clean": "Cleans the developement-environment",
+        "clean": "Cleans the development-environment",
         "build": "Builds the project",
         "watch": "Builds the project in watch-mode",
-        "initialize": "Initializes the developement-environment",
+        "initialize": "Initializes the development-environment",
         "symlinks": "Creates all symbolic links required for testing the theme"
     },
     "scripts": {
