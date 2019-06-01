@@ -36,6 +36,21 @@ export class Settings
     private readonly stylePath: string = "css";
 
     /**
+     * Gets the path to the source-directory of the styles.
+     */
+    private readonly styleSource: string = "Theme";
+
+    /**
+     * Gets the path to the template-directory.
+     */
+    private readonly templatePath: string = "templates";
+
+    /**
+     * Gets the path to the source-directory of the templates.
+     */
+    private readonly templateSource: string = "Templates";
+
+    /**
      * Gets the path to a temporary directory.
      */
     private readonly tempPath: string = "obj";
@@ -157,6 +172,48 @@ export class Settings
     public StylePath(...path: string[])
     {
         return Path.posix.join(this.stylePath, ...path);
+    }
+
+    /**
+     * Creates a path relative to the source-directory of the styles.
+     *
+     * @param path
+     * The path to join.
+     *
+     * @return
+     * The joined path.
+     */
+    public StyleSource(...path: string[])
+    {
+        return this.SourcePath(this.styleSource, ...path);
+    }
+
+    /**
+     * Creates a path relative to the template-directory.
+     *
+     * @param path
+     * The path to join.
+     *
+     * @return
+     * The joined path.
+     */
+    public TemplatePath(...path: string[])
+    {
+        return Path.posix.join(this.stylePath, ...path);
+    }
+
+    /**
+     * Creates a path relative to the source-directory of the templates.
+     *
+     * @param path
+     * The path to join.
+     *
+     * @return
+     * The joined path.
+     */
+    public TemplateSource(...path: string[])
+    {
+        return this.SourcePath(this.styleSource, ...path);
     }
 
     /**

@@ -49,7 +49,7 @@ export async function Clean()
     await FileSystem.remove(Path.join("test", "website", "themes", "mantra"));
     await FileSystem.remove(settings.JavaScriptPath());
     await FileSystem.remove(settings.StylePath());
-    await FileSystem.remove("templates");
+    await FileSystem.remove(settings.TemplatePath());
 }
 Clean.description = "Cleans the build-files"
 
@@ -122,12 +122,12 @@ export function Theme()
         sourcemaps.write,
         ".",
         {
-            sourceRoot: Path.relative(settings.StylePath(), settings.SourcePath("Theme"))
+            sourceRoot: Path.relative(settings.StylePath(), settings.StyleSource())
         }
     );
 
     return gulp.src(
-        settings.SourcePath("Theme", "main.scss")).pipe(
+        settings.StyleSource("main.scss")).pipe(
             gulpif(
                 settings.Debug,
                 debugBuilder(),
@@ -141,8 +141,8 @@ Theme.description = "Builds the theme";
 export function Templates()
 {
     return gulp.src(
-        settings.SourcePath("Templates", "**")).pipe(
-            gulp.dest("templates"));
+        settings.TemplateSource("**")).pipe(
+            gulp.dest(settings.TemplatePath()));
 }
 Templates.description = "Build the templates";
 
@@ -151,9 +151,9 @@ export let Watch = gulp.series(
     Build,
     function Watching()
     {
-        gulp.watch(settings.SourcePath("Templates", "**"), Templates);
+        gulp.watch(settings.TemplateSource("**"), Templates);
         gulp.watch(settings.TypeScriptProjectRoot("**"), Library);
-        gulp.watch(settings.SourcePath("Theme", "**"), Theme);
+        gulp.watch(settings.StyleSource("**"), Theme);
     });
 Watch.description = "Builds the project in watch-mode";
 
