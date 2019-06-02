@@ -69,7 +69,7 @@ export async function Initialize()
     }
 
     let themeDir = "./test/website/themes/mantra";
-    let fileEntries = await promisify(glob)("!(test)");
+    let fileEntries = await promisify(glob)("!(test|obj)");
 
     for (let fileEntry of fileEntries)
     {
