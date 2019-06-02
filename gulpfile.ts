@@ -1,5 +1,6 @@
 import browserify from "browserify";
 import FileSystem, { pathExists } from "fs-extra";
+import glob from "glob";
 import gulp from "gulp";
 import buffer from "gulp-buffer";
 import gulpif from "gulp-if";
@@ -8,12 +9,14 @@ import sass from "gulp-sass";
 import sourcemaps from "gulp-sourcemaps";
 import minify from "gulp-uglify";
 import lazyPipe from "lazypipe";
+import link from "lnk";
 import sassImporter from "node-sass-package-importer";
 import Path from "path";
 import tsify from "tsify";
 import source from "vinyl-source-stream";
 import { SettingsStore } from "./.gulp/SettingsStore";
 import "./.gulp/TaskFunction";
+import { promisify } from "util";
 
 let settings = SettingsStore.Load();
 
@@ -51,7 +54,31 @@ export async function Clean()
     await FileSystem.remove(settings.StylePath());
     await FileSystem.remove(settings.TemplatePath());
 }
-Clean.description = "Cleans the build-files"
+Clean.description = "Cleans the build-files";
+
+export async function Initialize()
+{
+    for (let directory of [
+        "javascript",
+        "css",
+        "templates",
+        "assets"
+    ])
+    {
+        await FileSystem.emptyDir(directory);
+    }
+
+    let themeDir = "./test/website/themes/mantra";
+    let fileEntries = await promisify(glob)("!(test)");
+
+    for (let fileEntry of fileEntries)
+    {
+        await FileSystem.remove(Path.join(themeDir, fileEntry));
+    }
+
+    await link(fileEntries, themeDir);
+}
+Initialize.description = "Initializes the development-environment";
 
 export function Library()
 {

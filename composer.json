@@ -20,8 +20,7 @@
         "clean": "Cleans the development-environment",
         "build": "Builds the project",
         "watch": "Builds the project in watch-mode",
-        "initialize": "Initializes the development-environment",
-        "symlinks": "Creates all symbolic links required for testing the theme"
+        "initialize": "Initializes the development-environment"
     },
     "scripts": {
         "clean": [
@@ -35,9 +34,6 @@
         ],
         "initialize": [
             "npm run initialize"
-        ],
-        "symlinks": [
-            "npm run symlinks"
         ]
     },
     "require": {},
